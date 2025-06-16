@@ -5,11 +5,8 @@ Aplikacja webowa do zarządzania planami treningowymi stworzona w technologii AS
 ---
 
 ## 📌 Opis projektu
-
 Ten projekt łączy **MVC (Razor)** i **REST API** z dostępem do **SQL Servera** przy użyciu **Entity Framework Core**.
-
 Funkcjonalności:
-
 - ✅ Interfejs użytkownika (Views): Community, Create, Edit
 - ✅ REST API: GET / POST / PUT / DELETE planów
 - ✅ Model z walidacją `[Required]`
@@ -20,7 +17,6 @@ Funkcjonalności:
 
 ## 📂 Struktura katalogów
 <code>
-'''
 TrainingPlansApi/
 │
 ├── Controllers/ # Kontrolery MVC i API
@@ -46,14 +42,13 @@ TrainingPlansApi/
 ├── appsettings.json # Connection string
 ├── Program.cs # Bootstrap aplikacji
 └── SQL.sql # (opcjonalny) skrypt tworzący bazę
-'''
 </code>
+
 ---
 
 ## 📦 Modele danych
 ## TrainingPlan.cs
 <code>
-'''
 public class TrainingPlan
 {
     public int Id { get; set; }
@@ -65,7 +60,6 @@ public class TrainingPlan
     [Required] public string Description { get; set; }
     [Required] public DateTime CreatedAt { get; set; }
 }
-'''
 </code>
 
 ## 🧭 Routing i kontrolery
@@ -92,27 +86,22 @@ public class TrainingPlan
 ## 🛠️ Konfiguracja bazy danych
 - Plik: appsettings.json
 <code>
-'''
 "ConnectionStrings": {
   "DefaultConnection": "Server=localhost\\SQLEXPRESS;Database=TrainingPlansDb;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;"
 }
-'''
 </code>
 
 - Klasa: TrainingPlansContext.cs
 <code>
-'''
 public class TrainingPlansContext : DbContext
 {
     public DbSet<TrainingPlan> TrainingPlans { get; set; }
     public TrainingPlansContext(DbContextOptions<TrainingPlansContext> options) : base(options) { }
 
 }
-'''
 </code>
 
 ## 📌 Uwagi końcowe
 - Projekt oparty na ASP.NET Core MVC + Web API
 - Nie wymaga zewnętrznej bazy danych do testów (można użyć InMemory EF Core)
 - Gotowy do integracji z frontendem lub aplikacją mobilną
-
