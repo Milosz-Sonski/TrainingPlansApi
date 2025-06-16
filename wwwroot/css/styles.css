@@ -1,0 +1,119 @@
+/* General Reset */
+body, h1, p, ul, li, form, input, textarea, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Header Styling */
+header {
+    background-color: #0056b3;
+    padding: 10px 0;
+}
+
+    header nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            header nav ul li a:hover {
+                text-decoration: underline;
+            }
+
+/* Main Section */
+main {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 800px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+    /* Hero Section */
+    main::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 300px;
+        background-image: url('https://source.unsplash.com/1600x900/?gym');
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px 10px 0 0;
+        z-index: -1;
+    }
+
+    /* Titles and Labels */
+    main h1 {
+        margin-bottom: 20px;
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: center;
+    }
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Input and Button Styling */
+input, textarea, button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+    input:focus, textarea:focus {
+        border-color: #0056b3;
+        outline: none;
+    }
+
+button {
+    background: #0056b3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    button:hover {
+        background: #003366;
+    }
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+    }
+}

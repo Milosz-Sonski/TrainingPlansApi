@@ -1,0 +1,73 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Utwórz Plan Treningowy</h1>
+
+<p>
+    <form id="AddPlanForm" action="/api/TrainingPlans/add" method="POST">
+        <div>
+            <label for="plan_name">Nazwa Planu:</label>
+            <input type="text" id="plan_name" name="Name" required placeholder="Np. Plan na siłownię">
+        </div>
+        <div>
+            <label for="training_days">Dni Treningowe:</label>
+            <input type="text" id="training_days" name="TrainingDays" placeholder="np. Poniedziałek, Środa">
+        </div>
+        <div>
+            <label for="exercise">Dodaj Ćwiczenia:</label>
+            <textarea id="exercise" name="Exercises" placeholder="np. Przysiady, Wyciskanie na ławce"></textarea>
+        </div>
+        <div>
+            <label for="created_by">Twórca planu treningowego:</label>
+            <textarea id="created_by" name="CreatedBy" placeholder="Twoje imię"></textarea>
+        </div>
+        <div>
+            <label for="description">Uwagi/Instrukcje:</label>
+            <textarea id="description" name="Description" placeholder="np. Utrzymuj plecy proste"></textarea>
+        </div>
+        <button type="submit">Zapisz Plan</button>
+    </form>
+</p>
+
+<div id="confirmationMessage" style="display:none; color: green; margin-top: 20px;">
+    Plan został zapisany pomyślnie!
+</div>
+<div id="errorMessage" style="display:none; color: red; margin-top: 20px;">
+    Wystąpił błąd podczas zapisywania planu.
+</div>
+
+<script>
+    document.getElementById("AddPlanForm").addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        // Pobranie danych z formularza
+        const formData = new FormData(event.target);
+
+        try {
+            const response = await fetch(event.target.action, {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                // Wyświetl komunikat o sukcesie
+                document.getElementById("confirmationMessage").style.display = "block";
+                document.getElementById("errorMessage").style.display = "none";
+                event.target.reset(); // Wyczyść formularz
+            } else {
+                // Wyświetl błąd
+                document.getElementById("errorMessage").style.display = "block";
+                document.getElementById("confirmationMessage").style.display = "none";
+                console.error(result.message);
+            }
+        } catch (error) {
+            // Obsługa błędów
+            document.getElementById("errorMessage").style.display = "block";
+            document.getElementById("confirmationMessage").style.display = "none";
+            console.error("Error:", error);
+        }
+    });
+</script>

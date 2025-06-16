@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; ;
+}
+@model List<string>
+
+<h1>Twoja dawka motywacji!</h1>
+
+@if (Model != null && Model.Any())
+{
+    <ul style="margin-top: 20px; list-style-type: square;">
+        @foreach (var quote in Model)
+        {
+            <li style="display: flex; justify-content: center; align-items: center; font-size: 1.2em; color: #555;">
+                "@quote"
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>Brak motywacyjnych tekstów do wyświetlenia. Wracaj wkrótce!</p>
+}

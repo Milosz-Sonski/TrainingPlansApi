@@ -1,0 +1,36 @@
+﻿@using TrainingPlansApi.Models
+@model TrainingPlan
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edytuj Plan Treningowy</h1>
+
+<form asp-action="UpdatePlan" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <div>
+        <label for="Name">Nazwa Planu:</label>
+        <input type="text" id="Name" name="Name" value="@Model.Name" />
+    </div>
+
+    <div>
+        <label for="TrainingDays">Dni Treningowe:</label>
+        <input type="text" id="TrainingDays" name="TrainingDays" value="@Model.TrainingDays" />
+    </div>
+
+    <div>
+        <label for="Exercises">Ćwiczenia:</label>
+        <textarea id="Exercises" name="Exercises">@Model.Exercises</textarea>
+    </div>
+
+    <div>
+        <label for="Description">Uwagi:</label>
+        <textarea id="Description" name="Description">@Model.Description</textarea>
+    </div>
+
+    <button type="submit">Zapisz zmiany</button>
+</form>
+
+

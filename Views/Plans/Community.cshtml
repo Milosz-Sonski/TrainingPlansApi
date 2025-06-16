@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TrainingPlansApi.Models.TrainingPlan>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista Planów Treningowych</h1>
+
+@if (Model != null && Model.Any())
+{
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <thead style="background-color: #f2f2f2;">
+            <tr>
+                <th style="padding: 10px; border: 1px solid #ddd;">#</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Nazwa Planu</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Dni Treningowe</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Ćwiczenia</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Twórca Planów</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Opcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                var plan = Model.ElementAt(i);
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">@(i + 1)</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">@plan.Name</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">@plan.TrainingDays</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">@plan.Exercises</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">@plan.CreatedBy</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">
+                        <form asp-action="Edit" method="get" style="display: inline;">
+                            <input type="hidden" name="id" value="@plan.Id" />
+                            <button type="submit">Edytuj</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Brak zapisanych planów treningowych.</p>
+}
+
+@if (TempData["Message"] != null)
+{
+    <div>
+        <p>@TempData["Message"]</p>
+    </div>
+}
