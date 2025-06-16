@@ -15,7 +15,7 @@ Funkcjonalności:
 
 ---
 
-##🚀 Uruchamianie projektu
+## 🚀 Uruchamianie projektu
 ## 🖥️ Visual Studio (GUI)
 - Otwórz plik rozwiązania .sln lub projekt .csproj
 - Ustaw projekt TrainingPlansApi jako startowy
